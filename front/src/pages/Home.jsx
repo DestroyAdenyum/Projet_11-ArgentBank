@@ -1,5 +1,7 @@
 import React from "react";
 
+import Feature from "../components/Feature";
+
 import IconChat from '../assets/icons/icon-chat.png';
 import IconMoney from '../assets/icons/icon-money.png';
 import IconSecurity from '../assets/icons/icon-security.png';
@@ -18,21 +20,24 @@ function Home() {
             </div>
             <section class="features">
                 <h2 class="sr-only">Features</h2>
-                <div class="feature-item">
-                    <img src={IconChat} alt="Chat Icon" class="feature-icon"/>
-                    <h3 class="feature-item-title">You are our #1 priority</h3>
-                    <p>Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.</p>
-                </div>
-                <div class="feature-item">
-                    <img src={IconMoney} alt="Chat Icon" class="feature-icon"/>
-                    <h3 class="feature-item-title">More savings means higher rates</h3>
-                    <p>The more you save with us, the higher your interest rate will be!</p>
-                </div>
-                <div class="feature-item">
-                    <img src={IconSecurity} alt="Chat Icon" class="feature-icon"/>
-                    <h3 class="feature-item-title">Security you can trust</h3>
-                    <p>We use top of the line encryption to make sure your data and money is always safe.</p>
-                </div>
+                <Feature
+                    image={IconChat}
+                    alt='Chat Icon'
+                    title='You are our #1 priority'
+                    text='Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.'
+                />
+                <Feature
+                    image={IconMoney}
+                    alt='Money Icon'
+                    title='More savings means higher rates'
+                    text='The more you save with us, the higher your interest rate will be!'
+                />
+                <Feature
+                    image={IconSecurity}
+                    alt='Security Icon'
+                    title='Security you can trust'
+                    text='We use top of the line encryption to make sure your data and money is always safe.'
+                />
             </section>
         </div>
     )
