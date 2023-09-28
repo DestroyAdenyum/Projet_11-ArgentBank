@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 import App from './App';
 import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import store from './redux/store'
+import User from './pages/User';
 
 import './style/main.css';
-import SignIn from './pages/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/SignIn',
         element: <SignIn />,
+      },
+      {
+        path: '/User',
+        element: <User />
       }
     ]
   },
@@ -29,6 +36,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
