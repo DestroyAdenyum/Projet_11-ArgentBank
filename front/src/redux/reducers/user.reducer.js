@@ -5,13 +5,16 @@ const initialState = {
     lastname: '',
     email: '',
     id: '',
+    isLogged: false,
 };
 
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN':
-            return {...state, ...action.payload}
+            return {...state, ...action.payload, isLogged: true}
+        case 'LOGOUT':
+            return initialState
         default:
             return state
     }

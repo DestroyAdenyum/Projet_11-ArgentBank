@@ -9,12 +9,16 @@ function User() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        // S'il n'y a pas de user.token retourne vers la page SignIn
         if (user.token === null) {
             return navigate('/SignIn');
+        } else {
+            return navigate(`/User/${user.username}`);
         }
-    }, [])
+    })
+
     return (
-        <main className="main bg-dark">
+        <main className="main user-bg-dark">
             <div className="header">
                 <h1>Welcome back<br />Tony Jarvis!</h1>
                 <button className="edit-button">Edit Name</button>

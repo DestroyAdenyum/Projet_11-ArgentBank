@@ -25,13 +25,13 @@ function Form() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(formdata)
+      // Si la réponse est réussie, extraire les données JSON de la réponse.
     }).then(response => {
-        console.log(response)
         if (response.ok) {
             return response.json()
         }
+      // Si les données JSON sont valides, connecter l'utilisateur.
     }).then(data => {
-        console.log('data', data.body)
         dispatch(login(data.body))
         navigate('/user');
     })
