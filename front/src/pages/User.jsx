@@ -1,26 +1,57 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
+import { isLogged } from "../redux/actions/user.actions";
 
 import Account from "../components/Account";
 
 function User() {
     const user = useSelector(store => store.user)
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const [formdata] = useState({
+        id: "",
+        email:"",
+    })
+
 
     useEffect(() => {
         // S'il n'y a pas de user.token retourne vers la page SignIn
         if (user.token === null) {
             return navigate('/SignIn');
         } else {
-            return navigate(`/User/${user.username}`);
+            const handleProfile = async() => {
+                try {
+                    await fetch('http://localhost:3001/api/v1/user/profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': `Bearer ${user.token}`
+                        },
+                        body: JSON.stringify(formdata)
+                    }).then(response => {
+                        if (response.ok) {
+                            return response.json()
+                        }
+                    }).then(data => {
+                        dispatch(isLogged(data.body))
+                    })
+                } catch(error) {
+                    console.log(error)
+                }
+            };
+
+            handleProfile();
         }
-    })
+    }, [dispatch, navigate, user.token, user.isLogged, formdata])
 
     return (
         <main className="main user-bg-dark">
             <div className="header">
-                <h1>Welcome back<br />Tony Jarvis!</h1>
+                <h1>Welcome back<br />{user.firstName} {user.lastName}!</h1>
                 <button className="edit-button">Edit Name</button>
             </div>
             <h2 className="sr-only">Accounts</h2>

@@ -5,6 +5,13 @@ export const login = (payload) => {
     }
 }
 
+export const isLogged = (payload) => {
+    return {
+      type: 'IS_LOGGED',
+      payload,
+    };
+  };
+
 export const logout = () => {
     return {
         type: 'LOGOUT',
