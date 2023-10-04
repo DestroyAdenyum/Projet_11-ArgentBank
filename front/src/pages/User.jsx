@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { isLogged } from "../redux/actions/user.actions";
+import { editName } from "../redux/actions/user.actions";
 
 import Account from "../components/Account";
+import EditNameForm from "../components/EditNameForm";
 
 function User() {
     const user = useSelector(store => store.user)
@@ -15,7 +17,6 @@ function User() {
         id: "",
         email:"",
     })
-
 
     useEffect(() => {
         // S'il n'y a pas de user.token retourne vers la page SignIn
@@ -48,11 +49,24 @@ function User() {
         }
     }, [dispatch, navigate, user.token, user.isLogged, formdata])
 
+    const [showEditForm, setShowEditForm] = useState(false);
+
+    const handleShowEditForm = () => {
+        setShowEditForm(!showEditForm);
+    }
+
+    const handleEditFormSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(editName(formdata));
+        setShowEditForm(false);
+    }
+
     return (
         <main className="main user-bg-dark">
             <div className="header">
-                <h1>Welcome back<br />{user.firstName} {user.lastName}!</h1>
-                <button className="edit-button">Edit Name</button>
+                {!showEditForm && <h1>Welcome back<br />{user.firstName} {user.lastName}!</h1>}
+                {!showEditForm && <button className="edit-button" onClick={handleShowEditForm}>Edit Name</button>}
+                {showEditForm && <EditNameForm onSubmit={handleEditFormSubmit} />}
             </div>
             <h2 className="sr-only">Accounts</h2>
             

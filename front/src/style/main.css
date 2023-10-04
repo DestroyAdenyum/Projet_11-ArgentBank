@@ -267,6 +267,13 @@ body {
   padding: 10px;
 }
 
+.edit-content {
+  box-sizing: border-box;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 .header {
   color: #fff;
   margin-bottom: 2rem;

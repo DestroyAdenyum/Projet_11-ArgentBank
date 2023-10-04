@@ -7,6 +7,7 @@ import Logo from '../assets/images/argentBankLogo.png';
 function Header() {
     // Enregistrement du token avec useSelector
     const token = useSelector(state => state.user.token);
+    const user = useSelector(store => store.user)
     const dispatch = useDispatch();
 
     return (
@@ -20,10 +21,16 @@ function Header() {
                     {
                         token ?
                         // Si le token est là mettre le lien de déconnexion
-                        <NavLink className="main-nav-item" to={'/SignIn'} onClick={() => dispatch(logout())}>
-                            <i className="fa fa-user-circle"></i>
-                            Log Out
-                        </NavLink>
+                        <>
+                            <NavLink className="main-nav-item" to={'/User'}>
+                                {user.firstName}
+                                <i className="fa fa-user-circle"></i>
+                            </NavLink>
+                            <NavLink className="main-nav-item" to={'/SignIn'} onClick={() => dispatch(logout())}>
+                                <i className="fa fa-sign-out"></i>
+                                Sign Out
+                            </NavLink>
+                        </>
                         :
                         // Sinon laisser le Sign In
                         <NavLink className="main-nav-item" to={'/SignIn'}>
@@ -31,7 +38,7 @@ function Header() {
                             Sign In
                         </NavLink>
                     }
-                </div>
+                </div>   
             </nav>
         </header>
     )

@@ -33,7 +33,7 @@ function Form() {
       // Si les données JSON sont valides, connecter l'utilisateur.
     }).then(data => {
         dispatch(login(data.body))
-        navigate('/user');
+        navigate('/User');
     })
   }
 

@@ -1,8 +1,8 @@
 const initialState = {
     token: null,
-    username: '',
-    firstname: '',
-    lastname: '',
+    userName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     id: '',
     isLogged: false,
@@ -14,6 +14,8 @@ const userReducer = (state = initialState, action) => {
         case 'LOGIN':
             return { ...state, ...action.payload, isLogged: true }
         case 'IS_LOGGED':
+            return { ...state, ...action.payload };
+        case'EDIT_NAME':
             return { ...state, ...action.payload };
         case 'LOGOUT':
             return initialState
