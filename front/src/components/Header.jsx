@@ -21,16 +21,18 @@ function Header() {
                     {
                         token ?
                         // Si le token est là mettre le lien de déconnexion
-                        <>
-                            <NavLink className="main-nav-item" to={'/User'}>
-                                {user.firstName}
-                                <i className="fa fa-user-circle"></i>
+                        <div className='user-nav'>
+                            <NavLink className="user-nav-item" to={'/User'}>
+                                <p className='user-nav-name'>{user.firstName}</p>
+                                <i className="user-nav-icon fa fa-user-circle"></i>
                             </NavLink>
-                            <NavLink className="main-nav-item" to={'/SignIn'} onClick={() => dispatch(logout())}>
-                                <i className="fa fa-sign-out"></i>
-                                Sign Out
+                            <div className="user-nav-item">
+                                <i className="user-nav-icon fa fa-gear"></i>
+                            </div>                            
+                            <NavLink className="user-nav-item" to={'/SignIn'} onClick={() => dispatch(logout())}>
+                            <i className="user-nav-icon fa fa-power-off"></i>
                             </NavLink>
-                        </>
+                        </div>
                         :
                         // Sinon laisser le Sign In
                         <NavLink className="main-nav-item" to={'/SignIn'}>

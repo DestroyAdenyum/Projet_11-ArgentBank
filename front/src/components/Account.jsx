@@ -1,6 +1,8 @@
-function Account({ title, amount, description }) {
+function Account({ title, amount, description, showEditForm }) {
+    const editModeAccount = showEditForm ? "account account-edit-mode" : "account";
+
     return (
-        <section className="account">
+        <section className={editModeAccount}>
             <div className="account-content-wrapper">
                 <h3 className="account-title">{title}</h3>
                 <p className="account-amount">{amount}</p>

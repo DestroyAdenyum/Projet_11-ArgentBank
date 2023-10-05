@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editName } from "../redux/actions/user.actions";
 
-function EditNameForm() {
+function EditNameForm({ handleShowEditForm }) {
     const user = useSelector(store => store.user)
     const dispatch = useDispatch();
 
@@ -38,11 +38,11 @@ function EditNameForm() {
     }
 
     return (
-        <div className="edit-content">
-            <h2>Edit Name</h2>
-            <form>
-                <div className="input-wrapper">
-                    <label htmlFor="username">User name</label>
+        <div className="edit-form-content">
+            <h2>Edit user info</h2>
+            <form className="edit-form">
+                <div className="edit-input-wrapper">
+                    <label htmlFor="username">User name:</label>
                     <input 
                         type="text"
                         name="username"
@@ -51,8 +51,8 @@ function EditNameForm() {
                         onChange={handleChangeForm}
                     />
                 </div>
-                <div className="input-wrapper">
-                    <label htmlFor="firstname">First name</label>
+                <div className="edit-input-wrapper">
+                    <label htmlFor="firstname">First name:</label>
                     <input
                         type="text"
                         name="firstname"
@@ -61,8 +61,8 @@ function EditNameForm() {
                         disabled
                     />
                 </div>
-                <div className="input-wrapper">
-                    <label htmlFor="lastname">Last name</label>
+                <div className="edit-input-wrapper">
+                    <label htmlFor="lastname">Last name:</label>
                     <input 
                         type="text"
                         name="lastname"
@@ -71,8 +71,10 @@ function EditNameForm() {
                         disabled
                     />
                 </div>
-                <button type="submit" className="sign-in-button" onClick={handleEditForm}>Save</button>
-                <button className="sign-in-button">Cancel</button>
+                <div className="edit-form-buttons">
+                    <button type="submit" className="edit-form-button" onClick={handleEditForm}>Save</button>
+                    <button className="edit-form-button" onClick={handleShowEditForm}>Cancel</button>
+                </div>
             </form>
         </div>
     )

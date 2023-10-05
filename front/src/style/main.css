@@ -78,6 +78,31 @@ body {
   width: 200px;
 }
 
+.user-nav {
+  display: flex;
+  color: #42b983;
+}
+
+.user-nav-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #42b983;
+  margin-right: 20px;
+}
+
+.user-nav-name {
+  color: #42b983;
+  margin-right: 0.5rem;
+}
+
+.user-nav-icon {
+  font-size: 30px;
+  color: #42b983;
+}
+
 .hero {
   background-image: url('../assets/images/bank-tree.jpeg');
   background-position: 0 -50px;
@@ -237,6 +262,15 @@ body {
   margin-bottom: 2rem;
 }
 
+.account-edit-mode {
+  background-color: gray;
+  color: white;
+}
+
+.account-edit-mode .transaction-button {
+  margin-top: 0;
+}
+
 .account-amount {
   margin: 0;
   font-size: 2.5rem;
@@ -267,11 +301,61 @@ body {
   padding: 10px;
 }
 
-.edit-content {
+.edit-form-content {
   box-sizing: border-box;
-  width: 300px;
+  color: black;
+  width: 500px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.edit-form-content h2 {
+  font-size: 30px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.edit-input-wrapper label {
+  font-weight: bold;
+}
+
+.edit-input-wrapper input {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.edit-form-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.edit-form-button {
+  display: block;
+  width: 40%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
 }
 
 .header {

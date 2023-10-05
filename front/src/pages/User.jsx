@@ -61,12 +61,19 @@ function User() {
         setShowEditForm(false);
     }
 
+    const editModeUser = showEditForm ? "main" : "main user-bg-dark";
+
     return (
-        <main className="main user-bg-dark">
+        <main className={editModeUser}>
             <div className="header">
                 {!showEditForm && <h1>Welcome back<br />{user.firstName} {user.lastName}!</h1>}
                 {!showEditForm && <button className="edit-button" onClick={handleShowEditForm}>Edit Name</button>}
-                {showEditForm && <EditNameForm onSubmit={handleEditFormSubmit} />}
+                {showEditForm && 
+                    <EditNameForm 
+                        onSubmit={handleEditFormSubmit}
+                        handleShowEditForm={handleShowEditForm}
+                    />
+                }
             </div>
             <h2 className="sr-only">Accounts</h2>
             
@@ -74,18 +81,21 @@ function User() {
                 title='Argent Bank Checking (x8349)'
                 amount='$2,082.79'
                 text='Available Balance'
+                showEditForm={showEditForm}
             />
 
             <Account 
                 title='Argent Bank Savings (x6712)'
                 amount='$10,928.42'
                 text='Available Balance'
+                showEditForm={showEditForm}
             />
 
             <Account 
                 title='Argent Bank Credit Card (x8349)'
                 amount='$184.30'
                 text='Current Balance'
+                showEditForm={showEditForm}
             />            
         </main>
     )
