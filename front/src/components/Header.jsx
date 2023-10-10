@@ -23,7 +23,7 @@ function Header() {
                         // Si le token est là mettre le lien de déconnexion
                         <div className='user-nav'>
                             <NavLink className="user-nav-item" to={'/User'}>
-                                <p className='user-nav-name'>{user.firstName}</p>
+                                <p className='user-nav-name'>{user.userName}</p>
                                 <i className="user-nav-icon fa fa-user-circle"></i>
                             </NavLink>
                             <div className="user-nav-item">

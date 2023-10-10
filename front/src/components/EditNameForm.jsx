@@ -11,6 +11,7 @@ function EditNameForm({ handleShowEditForm }) {
     });
 
     const handleChangeForm = (e) => {
+
         setForm({ ...form, [e.target.name]: e.target.value });
       };
 
@@ -31,6 +32,7 @@ function EditNameForm({ handleShowEditForm }) {
                 }
             }).then(data => {
                 dispatch(editName(data.body))
+                handleShowEditForm()
             })
         } catch(error) {
             console.log(error)
@@ -45,9 +47,9 @@ function EditNameForm({ handleShowEditForm }) {
                     <label htmlFor="username">User name:</label>
                     <input 
                         type="text"
-                        name="username"
+                        name="userName"
                         id="username"
-                        value={form.username}
+                        value={form.userName}
                         onChange={handleChangeForm}
                     />
                 </div>
