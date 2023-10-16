@@ -6,8 +6,10 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import App from './App';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
-import store from './redux/store'
 import User from './pages/User';
+import Error from './pages/Error';
+
+import store from './redux/store';
 
 import './style/main.css';
 
@@ -15,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -27,7 +30,11 @@ const router = createBrowserRouter([
       {
         path: '/User',
         element: <User />
-      }
+      },
+      {
+        path: 'Error',
+        element: <Error />,
+      },
     ]
   },
 ]);
