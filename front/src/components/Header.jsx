@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/user.actions';
 
-import Logo from '../assets/images/argentBankLogo.png';
+import Logo from '../assets/images/argentBankLogo.webp';
 
 function Header() {
     // Enregistrement du token avec useSelector
